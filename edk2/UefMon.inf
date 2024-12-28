@@ -1,0 +1,37 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = UefMon
+  FILE_GUID                      = 85c377e7-6989-4ef3-a71a-d4c8b2606e3f
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UefiMain
+
+[Sources]
+  ../src/main.c
+  ../src/recovery.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  ShellPkg/ShellPkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  BaseLib
+  FileHandleLib
+  ShellLib
+  PrintLib
+
+[Protocols]
+  gEfiSimpleFileSystemProtocolGuid  ## CONSUMES
+  gEfiShellProtocolGuid             ## CONSUMES
+  gEfiShellParametersProtocolGuid   ## CONSUMES
+
+[Guids]
+  gEfiGlobalVariableGuid            ## SOMETIMES_CONSUMES
+  gEfiFileInfoGuid                  ## SOMETIMES_CONSUMES 
